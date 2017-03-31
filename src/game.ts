@@ -3,7 +3,7 @@ let create : () => void;
 let update : () => void;
 let width : number = 0;
 let height : number = 0;
-export let game: Phaser.Game;
+export let game : Phaser.Game;
 export function setWidth(newWidth : number) : void
 {
     width = newWidth;
