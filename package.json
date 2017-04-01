@@ -12,7 +12,9 @@
     "@types/node": "^7.0.12",
     "browserify": "^14.1.0",
     "nwsjs": "^0.2.2",
+    "optimize-js": "^1.0.3",
     "phaser": "^2.6.2",
+    "semi": "^4.0.5",
     "typescript": "^2.2.2"
   }
 }
