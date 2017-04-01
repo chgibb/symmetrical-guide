@@ -30,14 +30,16 @@ export class Level1 extends Phaser.State
         this.map.setCollisionBetween(0,1);
 
         //PLAYER
-        this.player.sprite = this.add.sprite(100, 10, 'player');
+        //this.player.sprite = this.add.sprite(100, 10, 'player');
+        this.player.sprite = this.add.sprite(100, 10, 'Spritez', 'dude1');
         this.player.sprite.anchor.setTo(0.5, 0.5);
 
         this.player.setJumpSound();
 
         this.player.sprite.animations.add('idle', [0,1], 1, true);
         this.player.sprite.animations.add('jump', [2], 1, true);
-        this.player.sprite.animations.add('run', [3,4,5,6,7,8], 7, true);
+        //this.player.sprite.animations.add('run', [3,4,5,6,7,8], 7, true);
+        this.player.sprite.animations.add('run', ['dude1', 'dude2', 'dude3', 'dude4', 'dude5', 'dude6', 'dude5', 'dude4', 'dude3', 'dude2', 'dude1', 'dude1'], 20, true);
         this.physics.enable(this.player.sprite,Phaser.Physics.ARCADE);
         this.camera.follow(this.player.sprite);
         this.player.sprite.body.collideWorldBounds = true;
@@ -72,6 +74,7 @@ export class Level1 extends Phaser.State
             this.player.sprite.animations.play('jump');
             this.player.jumpSound.play();
         }
+
     }
 }
 export let level1 : Level1 = new Level1();
