@@ -7,7 +7,6 @@ export class Player extends Actor
     public constructor()
     {
         super();
-        
     }
     public setJumpSound()
     {
