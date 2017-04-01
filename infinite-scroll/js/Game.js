@@ -293,7 +293,7 @@ InfiniteScroller.Game.prototype = {
     this.mounds.enableBody = true;
 
     //phaser's random number generator
-    var numMounds = this.game.rnd.integerInRange(5, 10)
+    var numMounds = this.game.rnd.integerInRange(0, 5)
     var mound;
 
     for (var i = 0; i < numMounds; i++) {

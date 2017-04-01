@@ -26,5 +26,5 @@ export function setUpdate(newUpdate : () => void) : void
 }
 export function createGame()
 {
-    var game = new Phaser.Game(800, 600, Phaser.CANVAS, '');
+    game = new Phaser.Game(800, 600, Phaser.CANVAS, '');
 }

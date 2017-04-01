@@ -16,10 +16,7 @@ import {game,
 import {boot} from "./src/boot";
 import {preLoader} from "./src/preloader";
 import {mainMenu} from "./src/mainMenu";
-
-game.state.add("Boot",boot);
-game.state.add("Preloader",preLoader)
-game.state.add("MainMenu",mainMenu);
+import {gameOver} from "./src/gameOver";
 
 
 function preload()
@@ -42,3 +39,9 @@ setWidth(800);
 setHeight(600);
 createGame();
 
+game.state.add("Boot",boot);
+game.state.add("Preloader",preLoader)
+game.state.add("MainMenu",mainMenu);
+game.state.add("GameOver",gameOver);    
+
+game.state.start("Boot");

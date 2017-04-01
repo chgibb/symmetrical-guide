@@ -12,6 +12,14 @@ function preload() {
 function create() {
     game_1.game.physics.startSystem(Phaser.Physics.ARCADE);
     game_1.game.add.sprite(0, 0, "sky");
+
+const boot_1 = require("./src/boot");
+const preloader_1 = require("./src/preloader");
+const mainMenu_1 = require("./src/mainMenu");
+const gameOver_1 = require("./src/gameOver");
+function preload() {
+}
+function create() {
 }
 function update() {
 }
