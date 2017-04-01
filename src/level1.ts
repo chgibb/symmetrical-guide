@@ -53,6 +53,7 @@ export class Level1 extends Phaser.State
             fill: '#fff',
             strokeThickness: 4
         });
+        this.scoreLabel.anchor.setTo(0.5,0.5);
 
         //PLAYER
         this.player.sprite = this.add.sprite(100, 10, 'Spritez', 'dude1');
@@ -171,9 +172,15 @@ export class Level1 extends Phaser.State
 
     public playerJabbed(player : Phaser.Sprite,syringe : Phaser.Sprite) : void
     {
-        this.player.pain.play();
-        syringe.kill();
-        this.player.lives -= 1;
+        if(!this.zuccDD) {
+            this.player.pain.play();
+            syringe.kill();
+            this.player.lives -= 1;
+        } else {
+            syringe.
+        }
+        
+        
     }
 
     public zuccD(player : Phaser.Sprite,zucc : Phaser.Sprite) : void
