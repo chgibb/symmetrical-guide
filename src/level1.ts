@@ -23,6 +23,7 @@ export class Level1 extends Phaser.State
     private scoreLabel: Phaser.Text;
 
     public syringeGroup : Phaser.Group;
+    public syringeSpawnTimer : number;
 
     public constructor()
     {
