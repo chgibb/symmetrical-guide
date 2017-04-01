@@ -61,11 +61,17 @@ export class Level1 extends Phaser.State
 
         this.copsGroup = game.add.group();
 
-        createCop(100,100,this.copsGroup);
-        createCop(200,100,this.copsGroup);
+      /*  setInterval(
+            function(){
+                createCop(100,100,this.copsGroup);
+                createCop(200,100,this.copsGroup);
+            },500
+        );*/
     }
     public update() : void
     {
+        createCop(100,100,this.copsGroup);
+                createCop(200,100,this.copsGroup);
         this.background.tilePosition.x -= 1;
         this.physics.arcade.collide(this.player.sprite,this.layer);
         if(this.controls.right.isDown){
@@ -99,10 +105,10 @@ export class Level1 extends Phaser.State
 
         for(let i : number = 0; i != this.copsGroup.children.length; ++i)
         {
-            if(this.copsGroup.children[i].body.x < this.player.sprite.x)
-                this.copsGroup.children[i].body.velocity.x = 160;
+            if((<any>this.copsGroup.children[i]).body.x < this.player.sprite.x)
+                (<any>this.copsGroup.children[i]).body.velocity.x = 160;
             else
-                this.copsGroup.children[i].body.velocity.x = -160;
+                (<any>this.copsGroup.children[i]).body.velocity.x = -160;
         }
 
     }
