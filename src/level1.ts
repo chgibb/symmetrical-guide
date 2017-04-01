@@ -41,7 +41,7 @@ export class Level1 extends Phaser.State
         this.map.setCollisionBetween(0,1);
 
         //MAP SCORING
-        this.scoreLabel = this.game.add.text(26, 3, 'Score: ' + this.score, {
+        this.scoreLabel = this.game.add.text(26, 3, '' + this.score, {
             font: '24px Arial Black',
             fill: '#fff',
             strokeThickness: 4
@@ -122,6 +122,9 @@ export class Level1 extends Phaser.State
                 (<any>this.copsGroup.children[i]).body.velocity.x = -160;
         }
 
+        this.scoreLabel.x = Math.floor(this.player.sprite.x + this.player.sprite.width / 2);
+        this.scoreLabel.y = Math.floor(this.player.sprite.y + this.player.sprite.height);
+
     }
     public playerCopCollision(player : Phaser.Sprite,cop : Phaser.Sprite) : void
     {
@@ -135,7 +138,7 @@ export class Level1 extends Phaser.State
             player.body.x += 30;
         cop.kill();
         this.score += 1;
-        this.scoreLabel.text = 'Score: ' + this.score;
+        this.scoreLabel.text = '' + this.score;
     }
 }
 export let level1 : Level1 = new Level1();
