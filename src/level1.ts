@@ -17,6 +17,10 @@ export class Level1 extends Phaser.State
     public controls : Controls;
     public copsGroup : Phaser.Group;
     public copSpawnTimer : number;
+
+    private score: number = 0;
+    private scoreLabel: Phaser.Text;
+
     public constructor()
     {
         super();
@@ -35,6 +39,13 @@ export class Level1 extends Phaser.State
         this.layer = this.map.createLayer(0);
         this.layer.resizeWorld();
         this.map.setCollisionBetween(0,1);
+
+        //MAP SCORING
+        this.scoreLabel = this.game.add.text(26, 3, 'Score: ' + this.score, {
+            font: '24px Arial Black',
+            fill: '#fff',
+            strokeThickness: 4
+        });
 
         //PLAYER
         //this.player.sprite = this.add.sprite(100, 10, 'player');
@@ -123,6 +134,8 @@ export class Level1 extends Phaser.State
         else
             player.body.x += 30;
         cop.kill();
+        this.score += 1;
+        this.scoreLabel.text = 'Score: ' + this.score;
     }
 }
 export let level1 : Level1 = new Level1();

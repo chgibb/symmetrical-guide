@@ -223,6 +223,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">pix/deadCop.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,9,17,18</rect>
+                <key>scale9Paddings</key>
+                <rect>8,9,17,18</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">pix/dude1.png</key>
             <key type="filename">pix/dude2.png</key>
             <key type="filename">pix/dude3.png</key>
