@@ -35,7 +35,7 @@ class MainMenu extends Phaser.State
 
         this.createButton
         (
-            game, "Play", game.world.centerX, game.world.centerY+150, 300, 100, 
+            game, "Play", game.world.centerX + 20, game.world.centerY, 300, 100, 
             function()
             {
                 game.state.start('Level1');
