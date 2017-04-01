@@ -93,6 +93,7 @@ export class Level1 extends Phaser.State
 
         this.physics.arcade.collide(this.player.sprite,this.layer);
         this.physics.arcade.collide(this.copsGroup,this.layer);
+        this.physics.arcade.collide(this.player.sprite,this.copsGroup);
 
         game.physics.arcade.overlap(this.player,this.copsGroup,this.playerCopCollision,null,this);
 
@@ -100,7 +101,7 @@ export class Level1 extends Phaser.State
     public playerCopCollision(player : Player,cop : Phaser.Sprite) : void
     {
         console.log("collided");
-        cop.kill();
+        //cop.kill();
     }
 }
 export let level1 : Level1 = new Level1();
