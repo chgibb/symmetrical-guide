@@ -1,8 +1,16 @@
 {"frames": [
 
 {
+	"filename": "badCop1",
+	"frame": {"x":0,"y":0,"w":100,"h":75},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":75},
+	"sourceSize": {"w":100,"h":75}
+},
+{
 	"filename": "dude1",
-	"frame": {"x":0,"y":0,"w":250,"h":75},
+	"frame": {"x":100,"y":0,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
@@ -10,7 +18,7 @@
 },
 {
 	"filename": "dude2",
-	"frame": {"x":250,"y":0,"w":250,"h":75},
+	"frame": {"x":350,"y":0,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
@@ -18,7 +26,7 @@
 },
 {
 	"filename": "dude3",
-	"frame": {"x":0,"y":75,"w":250,"h":75},
+	"frame": {"x":600,"y":0,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
@@ -26,7 +34,7 @@
 },
 {
 	"filename": "dude4",
-	"frame": {"x":250,"y":75,"w":250,"h":75},
+	"frame": {"x":850,"y":0,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
@@ -34,7 +42,7 @@
 },
 {
 	"filename": "dude5",
-	"frame": {"x":0,"y":150,"w":250,"h":75},
+	"frame": {"x":1100,"y":0,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
@@ -42,7 +50,7 @@
 },
 {
 	"filename": "dude6",
-	"frame": {"x":250,"y":150,"w":250,"h":75},
+	"frame": {"x":1350,"y":0,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
@@ -53,8 +61,8 @@
 	"version": "1.0",
 	"image": "spritez.png",
 	"format": "RGBA8888",
-	"size": {"w":500,"h":225},
+	"size": {"w":1600,"h":75},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:2c499fc302160b5e4a76f858a7b262b2:0452a1bc044986158ed80fa6b57b9cb3:824b951215806a648efef2f98bc644e0$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9b2acfeda0507f10f656bdd9617729f5:bf83b243478f1a0ce228b2d4441819de:824b951215806a648efef2f98bc644e0$"
 }
 }

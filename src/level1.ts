@@ -1,5 +1,6 @@
 import {game} from "./game";
 import {Player} from "./player";
+import {Cop} from "./cop";
 interface Controls
 {
     left : Phaser.Key;
@@ -14,6 +15,7 @@ export class Level1 extends Phaser.State
     public layer : Phaser.TilemapLayer;
     public player : Player;
     public controls : Controls;
+    public copsGroup : Phaser.Group;
     public constructor()
     {
         super();
@@ -55,6 +57,8 @@ export class Level1 extends Phaser.State
             up : this.input.keyboard.addKey(Phaser.Keyboard.W),
             space : this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
         };
+
+        this.copsGroup = game.add.group();
     }
     public update() : void
     {
