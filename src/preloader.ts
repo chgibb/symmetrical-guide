@@ -16,7 +16,7 @@ class PreLoader extends Phaser.State
 
         //LOAD assets
         game.load.tilemap('map', 'assets/Level1.csv');
-        game.load.image('tileset', 'assets/tileset2.png');
+        game.load.image('tileset', 'assets/tilesetLevel1.png');
 
         game.load.spritesheet('player', 'assets/player.png', 24, 26);
         game.load.spritesheet('coins', 'assets/coins.png', 30, 30);
