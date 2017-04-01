@@ -20,7 +20,7 @@ export class Level1 extends Phaser.State
     {
         super();
         this.player = new Player();
-        this.player.speed = 150;
+        this.player.speed = 10;
     }
     public create() : void
     {
@@ -62,18 +62,19 @@ export class Level1 extends Phaser.State
         this.copsGroup = game.add.group();
 
         new Cop(100,100,this.copsGroup);
+        new Cop(200,100,this.copsGroup);
     }
     public update() : void
     {
         this.background.tilePosition.x -= 1;
         this.physics.arcade.collide(this.player.sprite,this.layer);
         if(this.controls.right.isDown){
-            this.player.sprite.animations.play('run');
+            //this.player.sprite.animations.play('run');
             this.player.sprite.scale.setTo(1, 1);
             this.player.sprite.body.x += this.player.speed;
         }
         if(this.controls.left.isDown){
-            this.player.sprite.animations.play('run');
+           // this.player.sprite.animations.play('run');
             this.player.sprite.scale.setTo(-1, 1);
             this.player.sprite.body.x -= this.player.speed;
         }
@@ -86,18 +87,19 @@ export class Level1 extends Phaser.State
             this.player.jumpSound.play();
         }
         if(this.controls.space.isDown ){
-            this.player.sprite.animations.play('jump');
+            this.player.sprite.animations.play('punch');
             this.player.punch.play();
         }
 
         this.physics.arcade.collide(this.player.sprite,this.layer);
         this.physics.arcade.collide(this.copsGroup,this.layer);
 
-        game.physics.arcade.overlap(this.player,this.copsGroup)
+        game.physics.arcade.overlap(this.player,this.copsGroup,this.playerCopCollision,null,this);
 
     }
     public playerCopCollision(player : Player,cop : Phaser.Sprite) : void
     {
+        console.log("collided");
         cop.kill();
     }
 }
