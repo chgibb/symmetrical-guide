@@ -106,7 +106,7 @@ export class Level1 extends Phaser.State
         }
         if(this.time.now > this.copSpawnTimer)
         {
-            createCop(400,50,this.copsGroup,this.time.now+1400);
+            createCop(-400,50,this.copsGroup,this.time.now+1400);
             this.copSpawnTimer = this.time.now + 700;
         }
 
