@@ -7,10 +7,11 @@ export class Player extends Actor
     public constructor()
     {
         super();
-        this.punch = game.add.audio("punch");
+        
     }
     public setJumpSound()
     {
+        this.punch = game.add.audio("punch");
         this.addJumpSound("playerJumpSound");
     }
 
