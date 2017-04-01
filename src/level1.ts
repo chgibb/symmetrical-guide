@@ -54,10 +54,6 @@ export class Level1 extends Phaser.State
     {
         console.log("update");
         this.physics.arcade.collide(this.player.sprite,this.layer);
-        if(this.controls.up.isDown){
-            this.player.sprite.animations.play('jump');
-            this.player.jumpSound.play();
-        }
         if(this.controls.right.isDown){
             this.player.sprite.animations.play('run');
             this.player.sprite.scale.setTo(1, 1);
@@ -68,10 +64,13 @@ export class Level1 extends Phaser.State
             this.player.sprite.scale.setTo(-1, 1);
             this.player.sprite.body.velocity.x = -this.player.speed;
         }
-        if(this.controls.up.isDown && (this.player.sprite.body.onFloor()||
-            this.player.sprite.body.touching.down) && this.time.now> this.player.jumpTimer){
+        if(this.controls.up.isDown && this.time.now > this.player.jumpTimer){
+            this.player.sprite.animations.play('jump');
+            this.player.jumpSound.play();
             this.player.sprite.body.velocity.y = -800;
             this.player.jumpTimer = this.time.now + 700;
+            this.player.sprite.animations.play('jump');
+            this.player.jumpSound.play();
         }
     }
 }
