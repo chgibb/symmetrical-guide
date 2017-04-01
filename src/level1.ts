@@ -58,10 +58,12 @@ export class Level1 extends Phaser.State
         };
 
         this.copsGroup = game.add.group();
+
+        new Cop(100,100,this.copsGroup);
     }
     public update() : void
     {
-        this.physics.arcade.collide(this.player.sprite,this.layer);
+        
         if(this.controls.right.isDown){
             this.player.sprite.animations.play('run');
             this.player.sprite.scale.setTo(1, 1);
@@ -81,6 +83,15 @@ export class Level1 extends Phaser.State
             this.player.jumpSound.play();
         }
 
+        this.physics.arcade.collide(this.player.sprite,this.layer);
+        this.physics.arcade.collide(this.copsGroup,this.layer);
+
+        game.physics.arcade.overlap(this.player,this.copsGroup)
+
+    }
+    public playerCopCollision(player : Player,cop : Phaser.Sprite) : void
+    {
+        cop.kill();
     }
 }
 export let level1 : Level1 = new Level1();
