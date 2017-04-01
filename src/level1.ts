@@ -92,11 +92,6 @@ export class Level1 extends Phaser.State
             //this.player.sprite.animations.play('jump');
             this.player.jumpSound.play();
         }
-        if(this.controls.space.isDown ){
-            
-            let self = this;
-            setTimeout(function(){self.player.whoosh.play();},200);  
-        }
 
         this.physics.arcade.collide(this.player.sprite,this.layer);
         this.physics.arcade.collide(this.copsGroup,this.layer);
