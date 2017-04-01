@@ -21,14 +21,19 @@ function preload()
     game.load.image("sky","assets/sky.png");
     game.load.image("star","assets/star.png");
     game.load.spritesheet("dude","assets/dude.png",32,48);
+    platforms.preLoad();
 }
 function create()
 {   
+    platforms.create();
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.add.sprite(0,0,"sky");
-    ground = platforms.platformGroup.create(0,game.world.height-64,"ground");
+
+    platforms.addPlatorm(0,game.world.height-64,"ground");
+
+    /*ground = platforms.platformGroup.create(0,game.world.height-64,"ground");
     ground.scale.setTo(2,2);
-    ground.body.immovable = true;
+    ground.body.immovable = true;*/
 }
 function update()
 {
