@@ -120,7 +120,7 @@ export class Level1 extends Phaser.State
 
         if(this.time.now > this.zuccSpawnTimer) {
             //ZUCC
-            this.zuccSprite = game.add.sprite(Math.random() * 600, Math.random() * 1200, 'Spritez', 'zucc');
+            this.zuccSprite = game.add.sprite(Math.random() * 1200, Math.random() * 600, 'Spritez', 'zucc');
             this.zuccSprite.physicsEnabled = true;
             game.physics.arcade.enable(this.zuccSprite);
             this.zuccSprite.body.enable = true;
