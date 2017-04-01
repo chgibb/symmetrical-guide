@@ -1,11 +1,18 @@
 import {game} from "./game";
-class MainMenu extends Phaser.State
+class GameOver extends Phaser.State
 {
-    public bgMusic : Phaser.Sound;
     public titleScreen : Phaser.Sprite;
+    public scoreText : Phaser.Text;
     public constructor()
     {
         super();
+    }
+    public init() : void
+    {
+    }
+    public preload() : void
+    {
+        this.load.image("preloadBar","assets/preloadbar.png");
     }
     public createButton(
         game : Phaser.Game,
@@ -28,19 +35,15 @@ class MainMenu extends Phaser.State
     }
     public create() : void
     {
-        this.bgMusic = game.add.audio('BGMusic');
-        this.bgMusic.play();
-        this.titleScreen = game.add.sprite(game.world.centerX, game.world.centerY, 'splash');
+        this.titleScreen = game.add.sprite(400, 300, 'gameover');
         this.titleScreen.anchor.setTo(0.5, 0.5);
 
-        this.createButton
-        (
-            game, "Play", game.world.centerX, game.world.centerY+150, 300, 100, 
-            function()
-            {
-                game.state.start('Level1');
-            }
-        );
+        this.createButton(game, "Play Again", 220, 500, 300, 100, function(){
+            this.state.start('Level1');
+        });
+
+        this.scoreText = game.add.text(500, 500, 'Score: ', {font: '30px Arial', fill:'#fff'});
+        //this.scoreText.text = "Final Score: "+ score1;
     }
 }
-export let mainMenu : MainMenu = new MainMenu();
+export let gameOver : GameOver = new GameOver();
