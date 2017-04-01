@@ -24,7 +24,6 @@ export class Level1 extends Phaser.State
     private scoreLabel: Phaser.Text;
 
     public syringeGroup : Phaser.Group;
-    public syringeSpawnTimer : number;
 
     public constructor()
     {
@@ -83,14 +82,8 @@ export class Level1 extends Phaser.State
         this.scoreLabel.y = game.stage.y;
         if(this.time.now > this.copSpawnTimer)
         {
-            createCop(100,100,this.copsGroup);
+            createCop(100,100,this.copsGroup,this.time.now+1400);
             this.copSpawnTimer = this.time.now + 700;
-        }
-
-        if(this.time.now > this.syringeSpawnTimer)
-        {
-            createCop(100,100,this.syringeGroup);
-            this.syringeSpawnTimer = this.time.now + 700;
         }
 
         this.background.tilePosition.x -= 1;
@@ -127,6 +120,12 @@ export class Level1 extends Phaser.State
                 (<any>this.copsGroup.children[i]).body.velocity.x = 160;
             else
                 (<any>this.copsGroup.children[i]).body.velocity.x = -160;
+
+            if(this.time.now > (<any>this.copsGroup.children[i]).syringeSpawnTimer)
+            {
+                createSyringe((<any>this.copsGroup.children[i]).body.x,(<any>this.copsGroup.children[i]).body.y,this.syringeGroup);
+                (<any>this.copsGroup.children[i]).syringeSpawnTimer = this.time.now + 1400;
+            }
         }
         this.scoreLabel.x = this.player.sprite.body.x + (this.player.sprite.body.width / 2);
         this.scoreLabel.y = this.player.sprite.body.y - 30;
