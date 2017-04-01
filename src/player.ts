@@ -1,5 +1,6 @@
 import {game} from "./game";
-export class Player
+import {Actor} from "./actor";
+export class Player extends Actor
 {
     public jumpTimer : number;
     public jumpSound : Phaser.Sound;
@@ -8,9 +9,9 @@ export class Player
     {
         
     }
-    public addAudio()
+    public addJumpSound()
     {
-        this.jumpSound = game.add.audio('jumpsound');
+        super.addJumpSound();
     }
 
 }
