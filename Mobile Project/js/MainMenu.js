@@ -17,6 +17,10 @@ Game.MainMenu.prototype = {
             this.state.start('Level1');
         });
 
+        this.createButton(game, "INFINITE", game.world.centerX, game.world.centerY+50, 300, 100, function(){
+            this.state.start('Infinite1');
+        });
+
 
     },
 
