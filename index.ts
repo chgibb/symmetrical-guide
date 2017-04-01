@@ -12,6 +12,9 @@ import {game,
     setHeight,
     createGame
 }from "./src/game";
+import * as platforms from "./src/platforms";
+
+let ground;
 
 function preload()
 {
@@ -20,10 +23,12 @@ function preload()
     game.load.spritesheet("dude","assets/dude.png",32,48);
 }
 function create()
-{
+{   
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.add.sprite(0,0,"sky");
-
+    ground = platforms.platformGroup.create(0,game.world.height-64,"ground");
+    ground.scale.setTo(2,2);
+    ground.body.immovable = true;
 }
 function update()
 {
