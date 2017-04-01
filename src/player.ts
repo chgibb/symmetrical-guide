@@ -12,7 +12,7 @@ export class Player extends Actor
     public setJumpSound()
     {
         this.punch = game.add.audio("punch");
-        this.punch = game.add.audio("whoosh");
+        this.whoosh = game.add.audio("whoosh");
         this.addJumpSound("playerJumpSound");
     }
 

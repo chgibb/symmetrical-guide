@@ -87,7 +87,7 @@ export class Level1 extends Phaser.State
             this.player.jumpSound.play();
         }
         if(this.controls.space.isDown ){
-            this.player.sprite.animations.play('whoosh');
+            this.player.sprite.animations.play('punch');
             let self = this;
             setTimeout(function(){self.player.whoosh.play();},200);  
         }
