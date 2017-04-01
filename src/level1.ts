@@ -127,6 +127,22 @@ export class Level1 extends Phaser.State
                 (<any>this.copsGroup.children[i]).syringeSpawnTimer = this.time.now + 1400;
             }
         }
+        game.physics.arcade.overlap(this.layer,this.syringeGroup,this.syringeTouchedGround,null,this);
+        for(let i : number = 0; i != this.syringeGroup.children.length; ++i)
+        {
+            if(!(<any>this.syringeGroup.children[i]).addedImpulse)
+            {
+                if((<any>this.syringeGroup.children[i]).body.x < this.player.sprite.x)
+                {
+                    (<any>this.syringeGroup.children[i]).body.velocity.x = 300;
+                    (<any>this.syringeGroup.children[i]).body.velocity.y = -160;
+                }
+                if((<any>this.syringeGroup.children[i]).body.velocity.y == 0)
+                {
+                    (<any>this.syringeGroup.children[i]).kill();
+                }
+            }
+        }
         this.scoreLabel.x = this.player.sprite.body.x + (this.player.sprite.body.width / 2);
         this.scoreLabel.y = this.player.sprite.body.y - 30;
 
@@ -141,7 +157,7 @@ export class Level1 extends Phaser.State
         }
         else
             player.body.x += 30;
-        cop.kill();
+        cop.destroy();
         this.score += 1;
         this.scoreLabel.text = '' + this.score;
     }
@@ -151,6 +167,10 @@ export class Level1 extends Phaser.State
         this.player.pain.play();
         syringe.kill();
         this.player.lives -= 1;
+    }
+    public syringeTouchedGround(syringe : Phaser.Sprite) : void
+    {
+        //syringe.kill();
     }
 }
 export let level1 : Level1 = new Level1();
