@@ -1,6 +1,7 @@
 import {game} from "./game";
 import {Player} from "./player";
 import {createCop} from "./cop";
+import {createSyringe} from "./syringe"
 
 interface Controls
 {
@@ -58,9 +59,6 @@ export class Level1 extends Phaser.State
         this.player.setJumpSound();
 
         this.player.sprite.animations.add('idle', ['dude1'], 1, true);
-        //this.player.sprite.animations.add('idle', [0,1], 1, true);
-        //this.player.sprite.animations.add('jump', [2], 1, true);
-        //this.player.sprite.animations.add('run', [3,4,5,6,7,8], 7, true);
         this.player.sprite.animations.add('run', ['dude1', 'dude2', 'dude3', 'dude4', 'dude5', 'dude6', 'dude5', 'dude4', 'dude3', 'dude2', 'dude1', 'dude1'], 20, true);
         this.player.sprite.animations.add('punch', ['dude1', 'dude2', 'dude3', 'dude4', 'dude5', 'dude6', 'dude5', 'dude4', 'dude3', 'dude2', 'dude1', 'dude1'], 20, false);
         this.physics.enable(this.player.sprite,Phaser.Physics.ARCADE);
@@ -78,12 +76,6 @@ export class Level1 extends Phaser.State
         this.copsGroup = game.add.group();
         this.syringeGroup = game.add.group();
 
-      /*  setInterval(
-            function(){
-                createCop(100,100,this.copsGroup);
-                createCop(200,100,this.copsGroup);
-            },500
-        );*/
     }
     public update() : void
     {
