@@ -88,20 +88,22 @@ export class Level1 extends Phaser.State
         }
         if(this.controls.space.isDown ){
             this.player.sprite.animations.play('punch');
-            this.player.punch.play();
+            let self = this;
+            setTimeout(function(){self.player.punch.play();},200);  
         }
 
         this.physics.arcade.collide(this.player.sprite,this.layer);
         this.physics.arcade.collide(this.copsGroup,this.layer);
         this.physics.arcade.collide(this.player.sprite,this.copsGroup);
 
-        game.physics.arcade.overlap(this.player,this.copsGroup,this.playerCopCollision,null,this);
+        game.physics.arcade.overlap(this.player.sprite,this.copsGroup,this.playerCopCollision,null,this);
 
     }
     public playerCopCollision(player : Player,cop : Phaser.Sprite) : void
     {
         console.log("collided");
-        //cop.kill();
+        if(this.controls.space.isDown)
+            cop.kill();
     }
 }
 export let level1 : Level1 = new Level1();
