@@ -89,7 +89,7 @@ export class Level1 extends Phaser.State
         if(this.controls.space.isDown ){
             this.player.sprite.animations.play('whoosh');
             let self = this;
-            setTimeout(function(){self.player.punch.play();},200);  
+            setTimeout(function(){self.player.whoosh.play();},200);  
         }
 
         this.physics.arcade.collide(this.player.sprite,this.layer);

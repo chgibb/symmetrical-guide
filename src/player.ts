@@ -3,6 +3,7 @@ import {Actor} from "./actor";
 export class Player extends Actor
 {
     public punch : Phaser.Sound;
+    public whoosh : Phaser.Sound;
 
     public constructor()
     {
@@ -11,6 +12,7 @@ export class Player extends Actor
     public setJumpSound()
     {
         this.punch = game.add.audio("punch");
+        this.punch = game.add.audio("whoosh");
         this.addJumpSound("playerJumpSound");
     }
 
