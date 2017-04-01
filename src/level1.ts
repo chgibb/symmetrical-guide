@@ -20,6 +20,7 @@ export class Level1 extends Phaser.State
     }
     public create() : void
     {
+        game.physics.arcade.gravity.y = 1400;
          //MAP
         this.map = this.add.tilemap('map', 64, 64);
         this.map.addTilesetImage('tileset');
@@ -34,7 +35,7 @@ export class Level1 extends Phaser.State
         this.player.sprite.animations.add('idle', [0,1], 1, true);
         this.player.sprite.animations.add('jump', [2], 1, true);
         this.player.sprite.animations.add('run', [3,4,5,6,7,8], 7, true);
-        this.physics.arcade.enable(this.player.sprite);
+        this.physics.enable(this.player.sprite,Phaser.Physics.ARCADE);
         this.camera.follow(this.player.sprite);
         this.player.sprite.body.collideWorldBounds = true;
 
@@ -47,6 +48,8 @@ export class Level1 extends Phaser.State
     }
     public update() : void
     {
+        console.log("update");
+        this.physics.arcade.collide(this.player.sprite,this.layer);
         if(this.controls.up.isDown){
             this.player.sprite.animations.play('jump');
             this.player.jumpSound.play();
