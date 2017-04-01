@@ -15,6 +15,7 @@ export class Level1 extends Phaser.State
     public player : Player;
     public controls : Controls;
     public copsGroup : Phaser.Group;
+    public background: ImageData;
     public constructor()
     {
         super();
@@ -23,7 +24,7 @@ export class Level1 extends Phaser.State
     }
     public create() : void
     {
-        this.add.sprite(0, 0, 'background');
+        this.background = this.add.tileSprite(0, 0, 1250, 600, 'background');
         game.physics.arcade.gravity.y = 1400;
          //MAP
         this.map = this.add.tilemap('map', 64, 64);
@@ -60,7 +61,6 @@ export class Level1 extends Phaser.State
     }
     public update() : void
     {
-        console.log("update");
         this.physics.arcade.collide(this.player.sprite,this.layer);
         if(this.controls.right.isDown){
             this.player.sprite.animations.play('run');
