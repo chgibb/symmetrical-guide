@@ -20,7 +20,7 @@ export class Level1 extends Phaser.State
     {
         super();
         this.player = new Player();
-        this.player.speed = 150;
+        this.player.speed = 10;
     }
     public create() : void
     {
@@ -61,6 +61,7 @@ export class Level1 extends Phaser.State
         this.copsGroup = game.add.group();
 
         new Cop(100,100,this.copsGroup);
+        new Cop(200,100,this.copsGroup);
     }
     public update() : void
     {
@@ -88,11 +89,12 @@ export class Level1 extends Phaser.State
         this.physics.arcade.collide(this.player.sprite,this.layer);
         this.physics.arcade.collide(this.copsGroup,this.layer);
 
-        game.physics.arcade.overlap(this.player,this.copsGroup)
+        game.physics.arcade.overlap(this.player,this.copsGroup,this.playerCopCollision,null,this);
 
     }
     public playerCopCollision(player : Player,cop : Phaser.Sprite) : void
     {
+        console.log("collided");
         cop.kill();
     }
 }
