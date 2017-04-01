@@ -48,7 +48,6 @@ export class Level1 extends Phaser.State
         });
 
         //PLAYER
-        //this.player.sprite = this.add.sprite(100, 10, 'player');
         this.player.sprite = this.add.sprite(100, 10, 'Spritez', 'dude1');
         this.player.sprite.anchor.setTo(0.5, 0.5);
 
