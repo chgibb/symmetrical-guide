@@ -1,6 +1,6 @@
 import {game} from "./game";
 import {Player} from "./player";
-import {Cop} from "./cop";
+import {createCop} from "./cop";
 interface Controls
 {
     left : Phaser.Key;
@@ -61,8 +61,8 @@ export class Level1 extends Phaser.State
 
         this.copsGroup = game.add.group();
 
-        new Cop(100,100,this.copsGroup);
-        new Cop(200,100,this.copsGroup);
+        createCop(100,100,this.copsGroup);
+        createCop(200,100,this.copsGroup);
     }
     public update() : void
     {
