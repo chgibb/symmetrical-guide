@@ -187,6 +187,7 @@ export class Level1 extends Phaser.State
             syringe.destroy();
             this.player.lives -= 1;
         } else {
+            syringe.body.velocity.y = 800;
         }
         
         
