@@ -43,23 +43,23 @@ export class Level1 extends Phaser.State
     }
     public update() : void
     {
-        if(controls.up.isDown){
-            player.animations.play('jump');
+        if(this.controls.up.isDown){
+            this.player.animations.play('jump');
             jumpsound.play();
         }
-        if(controls.right.isDown){
-            player.animations.play('run');
-            player.scale.setTo(1, 1);
-            player.body.velocity.x = playerSpeed;
+        if(this.controls.right.isDown){
+            this.player.animations.play('run');
+            this.player.scale.setTo(1, 1);
+            this.player.body.velocity.x = playerSpeed;
         }
-        if(controls.left.isDown){
-            player.animations.play('run');
-            player.scale.setTo(-1, 1);
-            player.body.velocity.x = -playerSpeed;
+        if(this.controls.left.isDown){
+            this.player.animations.play('run');
+            this.player.scale.setTo(-1, 1);
+            this.player.body.velocity.x = -playerSpeed;
         }
-        if(controls.up.isDown && (player.body.onFloor()||
-            player.body.touching.down) && this.time.now> jumpTimer){
-            player.body.velocity.y = -800;
+        if(this.controls.up.isDown && (this.player.body.onFloor()||
+            this.player.body.touching.down) && this.time.now> jumpTimer){
+            this.player.body.velocity.y = -800;
             jumpTimer = this.time.now + 700;
         }
     }
