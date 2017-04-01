@@ -27,6 +27,7 @@ export class Level1 extends Phaser.State
 
     public zuccSprite: Phaser.Sprite;
     public zuccTimer: number;
+    public zuccSpawnTimer: number;
     public zuccDD: boolean = false;
 
     public constructor()
@@ -38,6 +39,7 @@ export class Level1 extends Phaser.State
     public create() : void
     {
         this.copSpawnTimer = this.time.now + 700;
+        this.zuccSpawnTimer = this.time.now + 1000;
         this.background = this.add.tileSprite(0, 0, 1500, 600, 'background');
         game.physics.arcade.gravity.y = 1400;
 
@@ -80,13 +82,7 @@ export class Level1 extends Phaser.State
         this.copsGroup = game.add.group();
         this.syringeGroup = game.add.group();
 
-        //ZUCC
-        this.zuccSprite = game.add.sprite(600, 300, 'Spritez', 'zucc');
-        this.zuccSprite.physicsEnabled = true;
-
-        game.physics.arcade.enable(this.zuccSprite);
-        this.zuccSprite.body.enable = true;
-	    this.zuccSprite.body.collideWorldBounds = true;
+        
 
     }
     public update() : void
@@ -105,6 +101,18 @@ export class Level1 extends Phaser.State
             this.player.sprite.loadTexture('Spritez', 'dude1');
             this.player.sprite.animations.add('punch', ['dude1', 'dude2', 'dude3', 'dude4', 'dude5', 'dude6', 'dude5', 'dude4', 'dude3', 'dude2', 'dude1', 'dude1'], 20, false);
             this.zuccDD = false;
+        }
+
+        if(this.time.now > this.zuccSpawnTimer) {
+            //ZUCC
+            this.zuccSprite = game.add.sprite(Math.random() * 600, Math.random() * 1200, 'Spritez', 'zucc');
+            this.zuccSprite.physicsEnabled = true;
+            game.physics.arcade.enable(this.zuccSprite);
+            this.zuccSprite.body.enable = true;
+            this.zuccSprite.body.collideWorldBounds = true;
+
+            
+            this.zuccSpawnTimer = this.time.now + (Math.random() * 8000)
         }
 
         this.background.tilePosition.x -= 1;
@@ -128,7 +136,7 @@ export class Level1 extends Phaser.State
             this.player.jumpSound.play();
         }
 
-        this.physics.arcade.collide(this.player.sprite,this.zuccSprite);
+        //this.physics.arcade.collide(this.player.sprite,this.zuccSprite);
         this.physics.arcade.collide(this.layer,this.zuccSprite);
         this.physics.arcade.collide(this.player.sprite,this.layer);
         this.physics.arcade.collide(this.copsGroup,this.layer);
@@ -193,8 +201,8 @@ export class Level1 extends Phaser.State
             syringe.destroy();
             this.player.lives -= 1;
         } else {
-            syringe.body.velocity.y = 1500;
-            syringe.body.velocity.x = 1500;
+            syringe.body.velocity.y = Math.random() * 1500;
+            syringe.body.velocity.x = Math.random() * 1500;
         }
         
         
@@ -206,7 +214,10 @@ export class Level1 extends Phaser.State
         this.zuccTimer = this.time.now + 5000;
         this.player.sprite.loadTexture('Spritez', 'dude1p');
         this.player.sprite.animations.add('punch', ['dude1p', 'dude2p', 'dude3p', 'dude4p', 'dude5p', 'dude6p', 'dude5p', 'dude4p', 'dude3p', 'dude2p', 'dude1p', 'dude1p'], 20, false);
+        zucc.destroy();
         this.zuccDD = true;
+
+        
     }
 }
 export let level1 : Level1 = new Level1();
