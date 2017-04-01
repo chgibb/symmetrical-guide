@@ -21,6 +21,7 @@ export class Level1 extends Phaser.State
     }
     public create() : void
     {
+        this.add.sprite(0, 0, 'background');
         game.physics.arcade.gravity.y = 1400;
          //MAP
         this.map = this.add.tilemap('map', 64, 64);
