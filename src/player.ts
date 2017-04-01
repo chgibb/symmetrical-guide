@@ -6,7 +6,7 @@ export class Player extends Actor
     public whoosh : Phaser.Sound;
     public pain: Phaser.Sound;
     public lives: number;
-
+    public health : number = 50;
     public constructor()
     {
         super();

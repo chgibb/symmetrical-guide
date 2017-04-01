@@ -22,6 +22,7 @@ export class Level1 extends Phaser.State
 
     private score: number = 0;
     private scoreLabel: Phaser.Text;
+    private healthLabel: Phaser.Text;
 
     public syringeGroup : Phaser.Group;
 
@@ -52,6 +53,11 @@ export class Level1 extends Phaser.State
 
         //MAP SCORING
         this.scoreLabel = this.game.add.text(26, 3, '' + this.score, {
+            font: '24px Arial Black',
+            fill: '#fff',
+            strokeThickness: 4
+        });
+        this.healthLabel = this.game.add.text(26, 3, '' + this.player.health, {
             font: '24px Arial Black',
             fill: '#fff',
             strokeThickness: 4
@@ -87,11 +93,20 @@ export class Level1 extends Phaser.State
     }
     public update() : void
     {
+        if(this.player.health <= 0)
+        {
+            game.state.start('GameOver');
+        }
         this.scoreLabel.x = game.stage.x;
         this.scoreLabel.y = game.stage.y;
         if(this.time.now > this.copSpawnTimer)
         {
-            createCop(100,100,this.copsGroup,this.time.now+1400);
+            createCop(100,50,this.copsGroup,this.time.now+1400);
+            this.copSpawnTimer = this.time.now + 700;
+        }
+        if(this.time.now > this.copSpawnTimer)
+        {
+            createCop(400,50,this.copsGroup,this.time.now+1400);
             this.copSpawnTimer = this.time.now + 700;
         }
 
@@ -166,8 +181,15 @@ export class Level1 extends Phaser.State
             {
                 if((<any>this.syringeGroup.children[i]).body.x < this.player.sprite.x)
                 {
-                    (<any>this.syringeGroup.children[i]).body.velocity.x = 300;
-                    (<any>this.syringeGroup.children[i]).body.velocity.y = -160;
+                    (<any>this.syringeGroup.children[i]).body.velocity.x = 3000;
+                    (<any>this.syringeGroup.children[i]).body.velocity.y = -400;
+                    (<any>this.syringeGroup.children[i]).addedImpulse = true;
+                }
+                else
+                {
+                    (<any>this.syringeGroup.children[i]).body.velocity.x = -3000;
+                    (<any>this.syringeGroup.children[i]).body.velocity.y = -400;
+                    (<any>this.syringeGroup.children[i]).addedImpulse = true;
                 }
                 if((<any>this.syringeGroup.children[i]).body.velocity.y == 0)
                 {
@@ -177,6 +199,9 @@ export class Level1 extends Phaser.State
         }
         this.scoreLabel.x = this.player.sprite.body.x + (this.player.sprite.body.width / 2);
         this.scoreLabel.y = this.player.sprite.body.y - 30;
+
+        this.healthLabel.x = this.player.sprite.body.x + (this.player.sprite.body.width / 2);
+        this.healthLabel.y = this.player.sprite.body.y - 80;
 
     }
     public playerCopCollision(player : Phaser.Sprite,cop : Phaser.Sprite) : void
@@ -199,7 +224,8 @@ export class Level1 extends Phaser.State
         if(!this.zuccDD) {
             this.player.pain.play();
             syringe.destroy();
-            this.player.lives -= 1;
+            this.player.health -= 1;
+            this.healthLabel.text = "" + this.player.health;
         } else {
             syringe.body.velocity.y = Math.random() * 1500;
             syringe.body.velocity.x = Math.random() * 1500;
