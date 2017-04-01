@@ -122,9 +122,10 @@ export class Level1 extends Phaser.State
             else
                 (<any>this.copsGroup.children[i]).body.velocity.x = -160;
         }
-
-        this.scoreLabel.x = Math.floor(this.player.sprite.x + this.player.sprite.width / 2);
-        this.scoreLabel.y = Math.floor(this.player.sprite.y + this.player.sprite.height);
+        this.scoreLabel.x = this.player.sprite.body.x + (this.player.sprite.body.width / 2);
+        this.scoreLabel.y = this.player.sprite.body.y - 30;
+        //this.scoreLabel.x = Math.floor(this.player.sprite.x + this.player.sprite.width / 2);
+        //this.scoreLabel.y = Math.floor(this.player.sprite.y + this.player.sprite.height / 2);
 
     }
     public playerCopCollision(player : Phaser.Sprite,cop : Phaser.Sprite) : void
