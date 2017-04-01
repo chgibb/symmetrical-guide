@@ -87,9 +87,9 @@ export class Level1 extends Phaser.State
             this.player.jumpSound.play();
         }
         if(this.controls.space.isDown ){
-            this.player.sprite.animations.play('punch');
+            this.player.sprite.animations.play('whoosh');
             let self = this;
-            setTimeout(function(){self.player.punch.play();},200);  
+            setTimeout(function(){self.player.whoosh.play();},200);  
         }
 
         this.physics.arcade.collide(this.player.sprite,this.layer);
@@ -107,6 +107,7 @@ export class Level1 extends Phaser.State
     }
     public playerCopCollision(player : Player,cop : Phaser.Sprite) : void
     {
+        this.player.sprite.animations.play('punch');
         if(this.controls.space.isDown)
             cop.kill();
     }
