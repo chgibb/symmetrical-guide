@@ -210,6 +210,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">pix/copBullet.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,10,19,19</rect>
+                <key>scale9Paddings</key>
+                <rect>9,10,19,19</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">pix/dude1.png</key>
             <key type="filename">pix/dude2.png</key>
             <key type="filename">pix/dude3.png</key>
