@@ -7,6 +7,7 @@ export class Actor
     public speed : number;
     public constructor()
     {
+        this.jumpTimer = 0;
     }
     public addJumpSound(
         key: string,
