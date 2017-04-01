@@ -4,7 +4,14 @@
 (<any>window).PIXI = require("phaser/build/custom/pixi");
 (<any>window).Phaser = require("phaser/build/custom/phaser-split");
 
-import * as game from "./src/game";
+import {game,
+    setCreate,
+    setPreload,
+    setUpdate,
+    setWidth,
+    setHeight,
+    createGame
+}from "./src/game";
 
 function preload()
 {
@@ -12,17 +19,16 @@ function preload()
 }
 function create()
 {
-
 }
 function update()
 {
-    
+
 }
 
-game.setPreload(preload);
-game.setCreate(create);
-game.setUpdate(update);
-game.setWidth(800);
-game.setHeight(600);
-game.createGame();
+setPreload(preload);
+setCreate(create);
+setUpdate(update);
+setWidth(800);
+setHeight(600);
+createGame();
 
