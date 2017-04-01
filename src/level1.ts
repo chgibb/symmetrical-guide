@@ -68,12 +68,12 @@ export class Level1 extends Phaser.State
         this.background.tilePosition.x -= 1;
         this.physics.arcade.collide(this.player.sprite,this.layer);
         if(this.controls.right.isDown){
-            this.player.sprite.animations.play('run');
+            //this.player.sprite.animations.play('run');
             this.player.sprite.scale.setTo(1, 1);
             this.player.sprite.body.x += this.player.speed;
         }
         if(this.controls.left.isDown){
-            this.player.sprite.animations.play('run');
+           // this.player.sprite.animations.play('run');
             this.player.sprite.scale.setTo(-1, 1);
             this.player.sprite.body.x -= this.player.speed;
         }
@@ -86,7 +86,7 @@ export class Level1 extends Phaser.State
             this.player.jumpSound.play();
         }
         if(this.controls.space.isDown ){
-            this.player.sprite.animations.play('jump');
+            this.player.sprite.animations.play('punch');
             this.player.punch.play();
         }
 
