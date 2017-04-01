@@ -82,6 +82,8 @@ export class Level1 extends Phaser.State
     }
     public update() : void
     {
+        this.scoreLabel.x = game.stage.x;
+        this.scoreLabel.y = game.stage.y;
         if(this.time.now > this.copSpawnTimer)
         {
             createCop(100,100,this.copsGroup);
