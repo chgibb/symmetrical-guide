@@ -9,7 +9,7 @@ class MainMenu extends Phaser.State
     }
     public createButton(
         game : Phaser.Game,
-        str : string
+        str : string,
         x : number,
         y : number,
         w : number,
