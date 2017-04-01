@@ -107,7 +107,7 @@ export class Level1 extends Phaser.State
     }
     public playerCopCollision(player : Player,cop : Phaser.Sprite) : void
     {
-        this.player.sprite.animations.play('punch');
+        this.player.punch.play();
         if(this.controls.space.isDown)
             cop.kill();
     }
