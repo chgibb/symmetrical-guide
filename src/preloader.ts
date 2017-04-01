@@ -20,7 +20,7 @@ class PreLoader extends Phaser.State
 
         game.load.spritesheet('player', 'assets/player.png', 24, 26);
         game.load.spritesheet('coins', 'assets/coins.png', 30, 30);
-        game.load.spritesheet('ninja', 'assets/ninja.png', 512, 512);
+        //game.load.spritesheet('ninja', 'assets/ninja.png', 512, 512);
 
         game.load.image('splash', 'assets/splash.png');
         game.load.image('button', 'assets/button.png');

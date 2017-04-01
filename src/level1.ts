@@ -87,7 +87,7 @@ export class Level1 extends Phaser.State
             this.player.jumpSound.play();
         }
         if(this.controls.space.isDown ){
-            this.player.sprite.animations.play('punch');
+            
             let self = this;
             setTimeout(function(){self.player.whoosh.play();},200);  
         }
@@ -98,18 +98,19 @@ export class Level1 extends Phaser.State
 
         game.physics.arcade.overlap(this.player.sprite,this.copsGroup,this.playerCopCollision,null,this);
 
-        for(let i : number = 0; i != this.copsGroup.children.length; ++i)
+        /*for(let i : number = 0; i != this.copsGroup.children.length; ++i)
         {
             if(this.copsGroup.children[i].body.x < this.player.sprite.x)
                 console.log("less than");
-        }
+        }*/
 
     }
     public playerCopCollision(player : Player,cop : Phaser.Sprite) : void
     {
+        console.log("collided");
+        this.player.sprite.animations.play('punch');
         this.player.punch.play();
-        if(this.controls.space.isDown)
-            cop.kill();
+        cop.kill();
     }
 }
 export let level1 : Level1 = new Level1();
