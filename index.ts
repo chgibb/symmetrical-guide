@@ -14,8 +14,10 @@ import {game,
 }from "./src/game";
 
 import {boot} from "./src/boot";
+import {preLoader} from "./src/preloader";
 
 game.state.add("Boot",boot);
+game.state.add("Preloader",preLoader)
 
 
 function preload()
