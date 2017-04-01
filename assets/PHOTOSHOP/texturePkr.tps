@@ -237,11 +237,17 @@
                 <false/>
             </struct>
             <key type="filename">pix/dude1.png</key>
+            <key type="filename">pix/dude1p.png</key>
             <key type="filename">pix/dude2.png</key>
+            <key type="filename">pix/dude2p.png</key>
             <key type="filename">pix/dude3.png</key>
+            <key type="filename">pix/dude3p.png</key>
             <key type="filename">pix/dude4.png</key>
+            <key type="filename">pix/dude4p.png</key>
             <key type="filename">pix/dude5.png</key>
+            <key type="filename">pix/dude5p.png</key>
             <key type="filename">pix/dude6.png</key>
+            <key type="filename">pix/dude6p.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -251,6 +257,19 @@
                 <rect>125,38,250,75</rect>
                 <key>scale9Paddings</key>
                 <rect>125,38,250,75</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">pix/zucc.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,16,32,32</rect>
+                <key>scale9Paddings</key>
+                <rect>16,16,32,32</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

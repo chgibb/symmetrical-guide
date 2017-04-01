@@ -24,6 +24,10 @@ export class Level1 extends Phaser.State
 
     public syringeGroup : Phaser.Group;
 
+    public zuccSprite: Phaser.Sprite;
+    public zuccTimer: number;
+    public zuccDD: boolean = false;
+
     public constructor()
     {
         super();
@@ -57,9 +61,6 @@ export class Level1 extends Phaser.State
         this.player.setJumpSound();
 
         this.player.sprite.animations.add('idle', ['dude1'], 1, true);
-        //this.player.sprite.animations.add('idle', [0,1], 1, true);
-        //this.player.sprite.animations.add('jump', [2], 1, true);
-        //this.player.sprite.animations.add('run', [3,4,5,6,7,8], 7, true);
         this.player.sprite.animations.add('run', ['dude1', 'dude2', 'dude3', 'dude4', 'dude5', 'dude6', 'dude5', 'dude4', 'dude3', 'dude2', 'dude1', 'dude1'], 20, true);
         this.player.sprite.animations.add('punch', ['dude1', 'dude2', 'dude3', 'dude4', 'dude5', 'dude6', 'dude5', 'dude4', 'dude3', 'dude2', 'dude1', 'dude1'], 20, false);
         this.physics.enable(this.player.sprite,Phaser.Physics.ARCADE);
@@ -76,6 +77,11 @@ export class Level1 extends Phaser.State
 
         this.copsGroup = game.add.group();
         this.syringeGroup = game.add.group();
+
+        //ZUCC
+        this.zuccSprite = game.add.sprite(600, 300, 'spritez', 'zucc');
+
+
 
       /*  setInterval(
             function(){
@@ -100,6 +106,13 @@ export class Level1 extends Phaser.State
             this.syringeSpawnTimer = this.time.now + 700;
         }
 
+        if(this.zuccDD && (this.time.now > this.zuccTimer)) {
+            //reset player to normal
+            this.player.sprite.loadTexture('spritez', 'dude1');
+            this.player.sprite.animations.add('punch', ['dude1', 'dude2', 'dude3', 'dude4', 'dude5', 'dude6', 'dude5', 'dude4', 'dude3', 'dude2', 'dude1', 'dude1'], 20, false);
+            this.zuccDD = false;
+        }
+
         this.background.tilePosition.x -= 1;
         this.physics.arcade.collide(this.player.sprite,this.layer);
         if(this.controls.right.isDown){
@@ -121,12 +134,14 @@ export class Level1 extends Phaser.State
             this.player.jumpSound.play();
         }
 
+        this.physics.arcade.collide(this.player.sprite,this.zuccSprite);
         this.physics.arcade.collide(this.player.sprite,this.layer);
         this.physics.arcade.collide(this.copsGroup,this.layer);
         //this.physics.arcade.collide(this.syringeGroup,this.layer);
 
         game.physics.arcade.overlap(this.player.sprite,this.copsGroup,this.playerCopCollision,null,this);
         game.physics.arcade.overlap(this.player.sprite, this.syringeGroup, this.playerJabbed, null, this);
+        game.physics.arcade.overlap(this.player.sprite, this.zuccSprite, this.zuccD, null, this);
 
         for(let i : number = 0; i != this.copsGroup.children.length; ++i)
         {
@@ -159,6 +174,14 @@ export class Level1 extends Phaser.State
         this.player.pain.play();
         syringe.kill();
         this.player.lives -= 1;
+    }
+
+    public zuccD(player : Phaser.Sprite,zucc : Phaser.Sprite) : void
+    {
+        this.zuccTimer = this.time.now + 5000;
+        this.player.sprite.loadTexture('spritez', 'dude1p');
+        this.player.sprite.animations.add('punch', ['dude1p', 'dude2p', 'dude3p', 'dude4p', 'dude5p', 'dude6p', 'dude5p', 'dude4p', 'dude3p', 'dude2p', 'dude1p', 'dude1p'], 20, false);
+        this.zuccDD = true;
     }
 }
 export let level1 : Level1 = new Level1();
