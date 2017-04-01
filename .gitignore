@@ -2,3 +2,4 @@ node_modules
 dist.js
 index.js
 src/*.js
+.DS_STORE

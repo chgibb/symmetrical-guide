@@ -1,60 +1,60 @@
 {"frames": [
 
 {
-	"filename": "dude1.png",
-	"frame": {"x":0,"y":0,"w":500,"h":150},
+	"filename": "dude1",
+	"frame": {"x":0,"y":0,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":150},
-	"sourceSize": {"w":500,"h":150}
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
+	"sourceSize": {"w":250,"h":75}
 },
 {
-	"filename": "dude2.png",
-	"frame": {"x":500,"y":0,"w":500,"h":150},
+	"filename": "dude2",
+	"frame": {"x":250,"y":0,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":150},
-	"sourceSize": {"w":500,"h":150}
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
+	"sourceSize": {"w":250,"h":75}
 },
 {
-	"filename": "dude3.png",
-	"frame": {"x":0,"y":150,"w":500,"h":150},
+	"filename": "dude3",
+	"frame": {"x":0,"y":75,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":150},
-	"sourceSize": {"w":500,"h":150}
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
+	"sourceSize": {"w":250,"h":75}
 },
 {
-	"filename": "dude4.png",
-	"frame": {"x":500,"y":150,"w":500,"h":150},
+	"filename": "dude4",
+	"frame": {"x":250,"y":75,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":150},
-	"sourceSize": {"w":500,"h":150}
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
+	"sourceSize": {"w":250,"h":75}
 },
 {
-	"filename": "dude5.png",
-	"frame": {"x":0,"y":300,"w":500,"h":150},
+	"filename": "dude5",
+	"frame": {"x":0,"y":150,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":150},
-	"sourceSize": {"w":500,"h":150}
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
+	"sourceSize": {"w":250,"h":75}
 },
 {
-	"filename": "dude6.png",
-	"frame": {"x":500,"y":300,"w":500,"h":150},
+	"filename": "dude6",
+	"frame": {"x":250,"y":150,"w":250,"h":75},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":150},
-	"sourceSize": {"w":500,"h":150}
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":75},
+	"sourceSize": {"w":250,"h":75}
 }],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "spritez.png",
 	"format": "RGBA8888",
-	"size": {"w":1000,"h":450},
+	"size": {"w":500,"h":225},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:95102edbdd6fe9fce9be4bbb78bb95f3:f503a245f767b6e6e4da6c46433c4175:824b951215806a648efef2f98bc644e0$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2c499fc302160b5e4a76f858a7b262b2:0452a1bc044986158ed80fa6b57b9cb3:824b951215806a648efef2f98bc644e0$"
 }
 }
