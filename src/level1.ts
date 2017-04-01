@@ -1,3 +1,5 @@
+import {game} from "./game";
+import {Player} from "./player";
 interface Controls
 {
     left : Phaser.Key;
@@ -8,11 +10,13 @@ export class Level1 extends Phaser.State
 {
     public map : Phaser.Tilemap;
     public layer : Phaser.TilemapLayer;
-    public player : Phaser.Sprite
+    public player : Player;
     public controls : Controls;
     public constructor()
     {
         super();
+        this.player = new Player();
+        this.player.speed = 150;
     }
     public create() : void
     {
@@ -24,15 +28,15 @@ export class Level1 extends Phaser.State
         this.map.setCollisionBetween(0,1);
 
         //PLAYER
-        this.player = this.add.sprite(100, 10, 'player');
-        this.player.anchor.setTo(0.5, 0.5);
+        this.player.sprite = this.add.sprite(100, 10, 'player');
+        this.player.sprite.anchor.setTo(0.5, 0.5);
 
-        this.player.animations.add('idle', [0,1], 1, true);
-        this.player.animations.add('jump', [2], 1, true);
-        this.player.animations.add('run', [3,4,5,6,7,8], 7, true);
-        this.physics.arcade.enable(this.player);
-        this.camera.follow(this.player);
-        this.player.body.collideWorldBounds = true;
+        this.player.sprite.animations.add('idle', [0,1], 1, true);
+        this.player.sprite.animations.add('jump', [2], 1, true);
+        this.player.sprite.animations.add('run', [3,4,5,6,7,8], 7, true);
+        this.physics.arcade.enable(this.player.sprite);
+        this.camera.follow(this.player.sprite);
+        this.player.sprite.body.collideWorldBounds = true;
 
         //CONTROLS
         this.controls = {
@@ -44,23 +48,24 @@ export class Level1 extends Phaser.State
     public update() : void
     {
         if(this.controls.up.isDown){
-            this.player.animations.play('jump');
-            jumpsound.play();
+            this.player.sprite.animations.play('jump');
+            this.player.jumpSound.play();
         }
         if(this.controls.right.isDown){
-            this.player.animations.play('run');
-            this.player.scale.setTo(1, 1);
-            this.player.body.velocity.x = playerSpeed;
+            this.player.sprite.animations.play('run');
+            this.player.sprite.scale.setTo(1, 1);
+            this.player.sprite.body.velocity.x = this.player.speed;
         }
         if(this.controls.left.isDown){
-            this.player.animations.play('run');
-            this.player.scale.setTo(-1, 1);
-            this.player.body.velocity.x = -playerSpeed;
+            this.player.sprite.animations.play('run');
+            this.player.sprite.scale.setTo(-1, 1);
+            this.player.sprite.body.velocity.x = -this.player.speed;
         }
-        if(this.controls.up.isDown && (this.player.body.onFloor()||
-            this.player.body.touching.down) && this.time.now> jumpTimer){
-            this.player.body.velocity.y = -800;
-            jumpTimer = this.time.now + 700;
+        if(this.controls.up.isDown && (this.player.sprite.body.onFloor()||
+            this.player.sprite.body.touching.down) && this.time.now> this.player.jumpTimer){
+            this.player.sprite.body.velocity.y = -800;
+            this.player.jumpTimer = this.time.now + 700;
         }
     }
 }
+export let level1 : Level1 = new Level1();

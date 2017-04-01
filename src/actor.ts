@@ -4,6 +4,7 @@ export class Actor
     public jumpTimer : number;
     public jumpSound : Phaser.Sound;
     public sprite : Phaser.Sprite;
+    public speed : number;
     public constructor()
     {
     }

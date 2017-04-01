@@ -31,7 +31,7 @@ class PreLoader extends Phaser.State
         this.load.image('rightButton', 'assets/rightArrow.png');
         this.load.image('jumpButton', 'assets/jumpButton.png');
 
-        this.load.audio('jumpsound', 'assets/Jump.mp3');
+        this.load.audio('playerJumpsound', 'assets/Jump.mp3');
         this.load.audio('coin', 'assets/Coin.mp3');
         this.load.audio('BGMusic', 'assets/BGMusic.mp3');
     }
