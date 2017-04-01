@@ -97,11 +97,20 @@ export class Level1 extends Phaser.State
     }
     public update() : void
     {
+        if(this.player.health <= 0)
+        {
+            game.state.start('GameOver');
+        }
         this.scoreLabel.x = game.stage.x;
         this.scoreLabel.y = game.stage.y;
         if(this.time.now > this.copSpawnTimer)
         {
-            createCop(100,100,this.copsGroup,this.time.now+1400);
+            createCop(100,50,this.copsGroup,this.time.now+1400);
+            this.copSpawnTimer = this.time.now + 700;
+        }
+        if(this.time.now > this.copSpawnTimer)
+        {
+            createCop(400,50,this.copsGroup,this.time.now+1400);
             this.copSpawnTimer = this.time.now + 700;
         }
 
@@ -164,8 +173,15 @@ export class Level1 extends Phaser.State
             {
                 if((<any>this.syringeGroup.children[i]).body.x < this.player.sprite.x)
                 {
-                    (<any>this.syringeGroup.children[i]).body.velocity.x = 300;
-                    (<any>this.syringeGroup.children[i]).body.velocity.y = -160;
+                    (<any>this.syringeGroup.children[i]).body.velocity.x = 3000;
+                    (<any>this.syringeGroup.children[i]).body.velocity.y = -400;
+                    (<any>this.syringeGroup.children[i]).addedImpulse = true;
+                }
+                else
+                {
+                    (<any>this.syringeGroup.children[i]).body.velocity.x = -3000;
+                    (<any>this.syringeGroup.children[i]).body.velocity.y = -400;
+                    (<any>this.syringeGroup.children[i]).addedImpulse = true;
                 }
                 if((<any>this.syringeGroup.children[i]).body.velocity.y == 0)
                 {

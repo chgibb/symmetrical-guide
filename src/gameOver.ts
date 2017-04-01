@@ -1,4 +1,5 @@
 import {game} from "./game";
+import {level1} from "./level1"
 class GameOver extends Phaser.State
 {
     public titleScreen : Phaser.Sprite;
@@ -35,10 +36,11 @@ class GameOver extends Phaser.State
     }
     public create() : void
     {
-        this.titleScreen = game.add.sprite(400, 300, 'gameover');
+        this.titleScreen = game.add.sprite(400, 300, 'splash');
         this.titleScreen.anchor.setTo(0.5, 0.5);
 
         this.createButton(game, "Play Again", 220, 500, 300, 100, function(){
+            level1.player.health = 50;
             this.state.start('Level1');
         });
 
