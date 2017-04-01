@@ -5,6 +5,7 @@ interface Controls
     left : Phaser.Key;
     right : Phaser.Key;
     up : Phaser.Key;
+    space: Phaser.Key;
 }
 export class Level1 extends Phaser.State
 {
@@ -45,7 +46,8 @@ export class Level1 extends Phaser.State
         this.controls = {
             right : this.input.keyboard.addKey(Phaser.Keyboard.D),
             left : this.input.keyboard.addKey(Phaser.Keyboard.A),
-            up : this.input.keyboard.addKey(Phaser.Keyboard.W)
+            up : this.input.keyboard.addKey(Phaser.Keyboard.W),
+            space : this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
         };
     }
     public update() : void
