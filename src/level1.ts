@@ -145,7 +145,6 @@ export class Level1 extends Phaser.State
                 (<any>this.copsGroup.children[i]).syringeSpawnTimer = this.time.now + 1400;
             }
         }
-        game.physics.arcade.overlap(this.layer,this.syringeGroup,this.syringeTouchedGround,null,this);
         for(let i : number = 0; i != this.syringeGroup.children.length; ++i)
         {
             if(!(<any>this.syringeGroup.children[i]).addedImpulse)
