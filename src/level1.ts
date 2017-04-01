@@ -88,6 +88,11 @@ export class Level1 extends Phaser.State
 
         //ZUCC
         this.zuccSprite = game.add.sprite(600, 300, 'Spritez', 'zucc');
+        this.zuccSprite.physicsEnabled = true;
+
+        game.physics.arcade.enable(this.zuccSprite);
+        this.zuccSprite.body.enable = true;
+	    this.zuccSprite.body.collideWorldBounds = true;
 
     }
     public update() : void
@@ -130,6 +135,7 @@ export class Level1 extends Phaser.State
         }
 
         this.physics.arcade.collide(this.player.sprite,this.zuccSprite);
+        this.physics.arcade.collide(this.layer,this.zuccSprite);
         this.physics.arcade.collide(this.player.sprite,this.layer);
         this.physics.arcade.collide(this.copsGroup,this.layer);
         //this.physics.arcade.collide(this.syringeGroup,this.layer);
@@ -197,7 +203,8 @@ export class Level1 extends Phaser.State
             this.player.health -= 1;
             this.healthLabel.text = "" + this.player.health;
         } else {
-            syringe.body.velocity.y = 800;
+            syringe.body.velocity.y = 1500;
+            syringe.body.velocity.x = 1500;
         }
         
         
@@ -205,6 +212,7 @@ export class Level1 extends Phaser.State
 
     public zuccD(player : Phaser.Sprite,zucc : Phaser.Sprite) : void
     {
+        console.log("hit zucc");
         this.zuccTimer = this.time.now + 5000;
         this.player.sprite.loadTexture('Spritez', 'dude1p');
         this.player.sprite.animations.add('punch', ['dude1p', 'dude2p', 'dude3p', 'dude4p', 'dude5p', 'dude6p', 'dude5p', 'dude4p', 'dude3p', 'dude2p', 'dude1p', 'dude1p'], 20, false);
