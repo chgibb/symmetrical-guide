@@ -38,7 +38,7 @@ setPreload(preload);
 setCreate(create);
 setUpdate(update);
 setWidth(800);
-setHeight(600);
+setHeight(800);
 createGame();
 
 game.state.add("Boot",boot);
