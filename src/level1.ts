@@ -10,10 +10,10 @@ interface Controls
 export class Level1 extends Phaser.State
 {
     public map : Phaser.Tilemap;
+    public background : Phaser.TileSprite;
     public layer : Phaser.TilemapLayer;
     public player : Player;
     public controls : Controls;
-    public background: ImageData;
     public constructor()
     {
         super();
@@ -24,6 +24,7 @@ export class Level1 extends Phaser.State
     {
         this.background = this.add.tileSprite(0, 0, 1250, 600, 'background');
         game.physics.arcade.gravity.y = 1400;
+
          //MAP
         this.map = this.add.tilemap('map', 64, 64);
         this.map.addTilesetImage('tileset');
@@ -44,7 +45,7 @@ export class Level1 extends Phaser.State
         //this.player.sprite.animations.add('run', [3,4,5,6,7,8], 7, true);
         this.player.sprite.animations.add('run', ['dude1', 'dude2', 'dude3', 'dude4', 'dude5', 'dude6', 'dude5', 'dude4', 'dude3', 'dude2', 'dude1', 'dude1'], 20, true);
         this.physics.enable(this.player.sprite,Phaser.Physics.ARCADE);
-        this.camera.follow(this.player.sprite);
+        //this.camera.follow(this.player.sprite);
         this.player.sprite.body.collideWorldBounds = true;
 
         //CONTROLS
@@ -57,16 +58,17 @@ export class Level1 extends Phaser.State
     }
     public update() : void
     {
+        this.background.tilePosition.x -= 1;
         this.physics.arcade.collide(this.player.sprite,this.layer);
         if(this.controls.right.isDown){
             this.player.sprite.animations.play('run');
             this.player.sprite.scale.setTo(1, 1);
-            this.player.sprite.body.velocity.x = this.player.speed;
+            this.player.sprite.body.x += this.player.speed;
         }
         if(this.controls.left.isDown){
             this.player.sprite.animations.play('run');
             this.player.sprite.scale.setTo(-1, 1);
-            this.player.sprite.body.velocity.x = -this.player.speed;
+            this.player.sprite.body.x -= this.player.speed;
         }
         if(this.controls.up.isDown && this.time.now > this.player.jumpTimer){
             //this.player.sprite.animations.play('jump');
