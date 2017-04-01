@@ -6,9 +6,18 @@
 
 import * as game from "./src/game";
 
-function preload(){}
-function create(){}
-function update(){}
+function preload()
+{
+
+}
+function create()
+{
+
+}
+function update()
+{
+    
+}
 
 game.setPreload(preload);
 game.setCreate(create);
