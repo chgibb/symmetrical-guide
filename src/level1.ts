@@ -147,6 +147,8 @@ export class Level1 extends Phaser.State
         }
         for(let i : number = 0; i != this.syringeGroup.children.length; ++i)
         {
+            if(!this.syringeGroup.children[i])
+                continue;
             if(!(<any>this.syringeGroup.children[i]).addedImpulse)
             {
                 if((<any>this.syringeGroup.children[i]).body.x < this.player.sprite.x)
@@ -156,7 +158,7 @@ export class Level1 extends Phaser.State
                 }
                 if((<any>this.syringeGroup.children[i]).body.velocity.y == 0)
                 {
-                    (<any>this.syringeGroup.children[i]).kill();
+                    (<any>this.syringeGroup.children[i]).destroy();
                 }
             }
         }
@@ -183,10 +185,10 @@ export class Level1 extends Phaser.State
     {
         if(!this.zuccDD) {
             this.player.pain.play();
-            syringe.kill();
+            syringe.destroy();
             this.player.lives -= 1;
         } else {
-            syringe.
+            
         }
         
         
