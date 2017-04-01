@@ -16,6 +16,7 @@ export class Level1 extends Phaser.State
     public player : Player;
     public controls : Controls;
     public copsGroup : Phaser.Group;
+    public copSpawnTimer : number;
     public constructor()
     {
         super();
@@ -24,6 +25,7 @@ export class Level1 extends Phaser.State
     }
     public create() : void
     {
+        this.copSpawnTimer = this.time.now + 700;
         this.background = this.add.tileSprite(0, 0, 1500, 600, 'background');
         game.physics.arcade.gravity.y = 1400;
 
@@ -70,8 +72,11 @@ export class Level1 extends Phaser.State
     }
     public update() : void
     {
-        createCop(100,100,this.copsGroup);
-                createCop(200,100,this.copsGroup);
+        if(this.time.now > this.copSpawnTimer)
+        {
+            createCop(100,100,this.copsGroup);
+            this.copSpawnTimer = this.time.now + 700;
+        }
         this.background.tilePosition.x -= 1;
         this.physics.arcade.collide(this.player.sprite,this.layer);
         if(this.controls.right.isDown){
@@ -107,10 +112,16 @@ export class Level1 extends Phaser.State
         }
 
     }
-    public playerCopCollision(player : Player,cop : Phaser.Sprite) : void
+    public playerCopCollision(player : Phaser.Sprite,cop : Phaser.Sprite) : void
     {
         this.player.sprite.animations.play('punch');
         this.player.punch.play();
+        if(cop.body.x > player.body.x)
+        {
+            player.body.x += -30;
+        }
+        else
+            player.body.x += 30;
         cop.kill();
     }
 }
