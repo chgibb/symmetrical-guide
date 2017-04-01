@@ -15,9 +15,11 @@ import {game,
 
 import {boot} from "./src/boot";
 import {preLoader} from "./src/preloader";
+import {mainMenu} from "./src/mainMenu";
 
 game.state.add("Boot",boot);
 game.state.add("Preloader",preLoader)
+game.state.add("MainMenu",mainMenu);
 
 
 function preload()
