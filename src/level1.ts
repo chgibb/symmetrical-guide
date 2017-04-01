@@ -32,6 +32,8 @@ export class Level1 extends Phaser.State
         this.player.sprite = this.add.sprite(100, 10, 'player');
         this.player.sprite.anchor.setTo(0.5, 0.5);
 
+        this.player.setJumpSound();
+
         this.player.sprite.animations.add('idle', [0,1], 1, true);
         this.player.sprite.animations.add('jump', [2], 1, true);
         this.player.sprite.animations.add('run', [3,4,5,6,7,8], 7, true);

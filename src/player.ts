@@ -6,9 +6,9 @@ export class Player extends Actor
     {
         super();
     }
-    public addJumpSound()
+    public setJumpSound()
     {
-        super.addJumpSound("playerJumpSound");
+        this.addJumpSound("playerJumpSound");
     }
 
 }
