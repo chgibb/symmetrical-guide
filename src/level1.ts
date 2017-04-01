@@ -1,6 +1,7 @@
 import {game} from "./game";
 import {Player} from "./player";
 import {createCop} from "./cop";
+
 interface Controls
 {
     left : Phaser.Key;
@@ -20,6 +21,8 @@ export class Level1 extends Phaser.State
 
     private score: number = 0;
     private scoreLabel: Phaser.Text;
+
+    public syringeGroup : Phaser.Group;
 
     public constructor()
     {
@@ -72,6 +75,7 @@ export class Level1 extends Phaser.State
         };
 
         this.copsGroup = game.add.group();
+        this.syringeGroup = game.add.group();
 
       /*  setInterval(
             function(){
@@ -89,6 +93,13 @@ export class Level1 extends Phaser.State
             createCop(100,100,this.copsGroup);
             this.copSpawnTimer = this.time.now + 700;
         }
+
+        if(this.time.now > this.syringeSpawnTimer)
+        {
+            createCop(100,100,this.syringeGroup);
+            this.syringeSpawnTimer = this.time.now + 700;
+        }
+
         this.background.tilePosition.x -= 1;
         this.physics.arcade.collide(this.player.sprite,this.layer);
         if(this.controls.right.isDown){
@@ -112,8 +123,10 @@ export class Level1 extends Phaser.State
 
         this.physics.arcade.collide(this.player.sprite,this.layer);
         this.physics.arcade.collide(this.copsGroup,this.layer);
+        //this.physics.arcade.collide(this.syringeGroup,this.layer);
 
         game.physics.arcade.overlap(this.player.sprite,this.copsGroup,this.playerCopCollision,null,this);
+        game.physics.arcade.overlap(this.player.sprite, this.syringeGroup, this.playerJabbed, null, this);
 
         for(let i : number = 0; i != this.copsGroup.children.length; ++i)
         {
@@ -140,6 +153,13 @@ export class Level1 extends Phaser.State
         cop.kill();
         this.score += 1;
         this.scoreLabel.text = '' + this.score;
+    }
+
+    public playerJabbed(player : Phaser.Sprite,syringe : Phaser.Sprite) : void
+    {
+        this.player.pain.play();
+        syringe.kill();
+        this.player.lives -= 1;
     }
 }
 export let level1 : Level1 = new Level1();

@@ -38,6 +38,7 @@ class PreLoader extends Phaser.State
         game.load.audio('punch', 'assets/punch.mp3');
         game.load.audio('finalPunch', 'assets/finalPunch.mp3');
         game.load.audio('whoosh', 'assets/whoosh.mp3');
+        game.load.audio('pain', 'assets/pain.wav');
 
         game.load.atlas('Spritez', 'assets/spritez.png', 'assets/spritez.json');
     }
