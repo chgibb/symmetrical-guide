@@ -81,7 +81,7 @@ export class Level1 extends Phaser.State
         this.syringeGroup = game.add.group();
 
         //ZUCC
-        this.zuccSprite = game.add.sprite(600, 300, 'spritez', 'zucc');
+        this.zuccSprite = game.add.sprite(600, 300, 'Spritez', 'zucc');
 
     }
     public update() : void
@@ -97,7 +97,7 @@ export class Level1 extends Phaser.State
 
         if(this.zuccDD && (this.time.now > this.zuccTimer)) {
             //reset player to normal
-            this.player.sprite.loadTexture('spritez', 'dude1');
+            this.player.sprite.loadTexture('Spritez', 'dude1');
             this.player.sprite.animations.add('punch', ['dude1', 'dude2', 'dude3', 'dude4', 'dude5', 'dude6', 'dude5', 'dude4', 'dude3', 'dude2', 'dude1', 'dude1'], 20, false);
             this.zuccDD = false;
         }
@@ -186,7 +186,6 @@ export class Level1 extends Phaser.State
             syringe.kill();
             this.player.lives -= 1;
         } else {
-            syringe.
         }
         
         
@@ -195,7 +194,7 @@ export class Level1 extends Phaser.State
     public zuccD(player : Phaser.Sprite,zucc : Phaser.Sprite) : void
     {
         this.zuccTimer = this.time.now + 5000;
-        this.player.sprite.loadTexture('spritez', 'dude1p');
+        this.player.sprite.loadTexture('Spritez', 'dude1p');
         this.player.sprite.animations.add('punch', ['dude1p', 'dude2p', 'dude3p', 'dude4p', 'dude5p', 'dude6p', 'dude5p', 'dude4p', 'dude3p', 'dude2p', 'dude1p', 'dude1p'], 20, false);
         this.zuccDD = true;
     }
