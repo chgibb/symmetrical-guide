@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^7.0.12",
+    "@types/node": "^8.0.28",
     "browserify": "^14.1.0",
     "nwsjs": "^0.2.2",
     "optimize-js": "^1.0.3",
